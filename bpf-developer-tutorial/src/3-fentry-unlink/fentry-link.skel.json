@@ -1,1 +1,0 @@
-{"bpf_skel":{"data_sections":[],"maps":[{"ident":"rodata_str1_1","name":".rodata.str1.1"}],"obj_name":"fentry_link_bpf","progs":[{"attach":"fentry/do_unlinkat","link":true,"name":"do_unlinkat"},{"attach":"fexit/do_unlinkat","link":true,"name":"do_unlinkat_exit"}]},"eunomia_version":"0.3.4"}

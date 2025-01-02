@@ -1,1 +1,0 @@
-{"bpf_skel":{"data_sections":[],"maps":[{"ident":"values","name":"values"},{"ident":"rodata_str1_1","name":".rodata.str1.1"}],"obj_name":"sigsnoop_bpf","progs":[{"attach":"tracepoint/syscalls/sys_enter_kill","link":true,"name":"kill_entry"},{"attach":"tracepoint/syscalls/sys_exit_kill","link":true,"name":"kill_exit"}]},"eunomia_version":"0.3.4"}
