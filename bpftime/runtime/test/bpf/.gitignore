@@ -1,0 +1,4 @@
+*.o
+*.btf
+*.a
+.output

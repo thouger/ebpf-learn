@@ -1,0 +1,17 @@
+/build
+build
+/.vscode
+/.cache
+libvm-bpf.a
+CMakeCache.txt
+CMakeFiles
+_deps
+cmake_install.cmake
+compile_commands.json
+libllvmbpf_vm.a
+test.o
+test.bin
+*.ll
+bpf_conformance
+
+

@@ -1,0 +1,57 @@
+name: Build and test AOT cli
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}-${{ github.event_name }}
+  cancel-in-progress: true
+jobs:
+  build:
+    strategy:
+      matrix:
+        container:
+          - ubuntu-2204
+          - fedora-39
+    runs-on: ubuntu-latest
+    container: 
+      image: "manjusakalza/bpftime-base-image:${{matrix.container}}"
+      options: --privileged
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: 'recursive'
+    
+    - name: Install Ninja (Ubuntu)
+      if: ${{matrix.container == 'ubuntu-2204'}}
+      run:
+        apt install ninja-build
+
+    - name: Install Ninja (Fedora)
+      if: ${{matrix.container == 'fedora-39'}}
+      run:
+        dnf install -y ninja-build
+        
+    
+    - name: Build and install everything
+      run: |
+          cmake -B build -DCMAKE_BUILD_TYPE=Debug -DBPFTIME_ENABLE_UNIT_TESTING=1 -DBUILD_LLVM_AOT_CLI=1 -G Ninja
+          cmake --build build --target all -j
+    - name: Do compilation & run
+      run: |
+        export PATH=$PATH:~/.bpftime
+        ./build/cli/bpftime-vm build .github/assets/sum.bpf.o
+        echo "AwAAAAEAAAACAAAAAwAAAA==" | base64 -d > test.bin
+        program_output=$(./build/cli/bpftime-vm run test.o test.bin)
+        echo $program_output
+        if echo $program_output | grep "Return value: 6"; then
+          echo "Successful!"
+          exit 0
+        else
+          echo "Not found!"
+          exit 1
+        fi
+        
+      

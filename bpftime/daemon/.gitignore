@@ -1,0 +1,15 @@
+.vscode
+package.json
+*.o
+*.skel.json
+*.skel.yaml
+package.yaml
+ecli
+bootstrap
+.output
+bpf_tracer
+victim
+victim2
+test.txt
+hijacked
+my_test.txt

@@ -1,0 +1,21 @@
+[submodule "third_party/bpftool"]
+	path = third_party/bpftool
+	url = https://github.com/libbpf/bpftool
+[submodule "third_party/spdlog"]
+	path = third_party/spdlog
+	url = https://github.com/gabime/spdlog
+[submodule "verifier/ebpf-verifier"]
+	path = bpftime-verifier/ebpf-verifier
+	url = https://github.com/vbpf/ebpf-verifier
+[submodule "third_party/argparse"]
+	path = third_party/argparse
+	url = https://github.com/p-ranav/argparse.git
+[submodule "third_party/Catch2"]
+	path = third_party/Catch2
+	url = https://github.com/catchorg/Catch2.git
+[submodule "third_party/ubpf"]
+	path = third_party/ubpf
+	url = https://github.com/iovisor/ubpf
+[submodule "vm/llvm-jit"]
+	path = vm/llvm-jit
+	url = https://github.com/eunomia-bpf/llvmbpf
